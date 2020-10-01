@@ -1,9 +1,9 @@
-# golang-repo-template
+# homekit
 
-![CI](https://github.com/MrEhbr/golang-repo-template/workflows/CI/badge.svg)
-[![License](https://img.shields.io/badge/license-Apache--2.0%20%2F%20MIT-%2397ca00.svg)](https://github.com/MrEhbr/golang-repo-template/blob/master/COPYRIGHT)
-[![GitHub release](https://img.shields.io/github/release/MrEhbr/golang-repo-template.svg)](https://github.com/MrEhbr/golang-repo-template/releases)
-[![codecov](https://codecov.io/gh/MrEhbr/golang-repo-template/branch/master/graph/badge.svg)](https://codecov.io/gh/MrEhbr/golang-repo-template)
+![CI](https://github.com/MrEhbr/homekit/workflows/CI/badge.svg)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20%2F%20MIT-%2397ca00.svg)](https://github.com/MrEhbr/homekit/blob/master/COPYRIGHT)
+[![GitHub release](https://img.shields.io/github/release/MrEhbr/homekit.svg)](https://github.com/MrEhbr/homekit/releases)
+[![codecov](https://codecov.io/gh/MrEhbr/homekit/branch/master/graph/badge.svg)](https://codecov.io/gh/MrEhbr/homekit)
 ![Made by Alexey Burmistrov](https://img.shields.io/badge/made%20by-Alexey%20Burmistrov-blue.svg?style=flat)
 
 ## Usage
@@ -17,12 +17,12 @@
 ### Using go
 
 ```console
-go get -u github.com/MrEhbr/golang-repo-template
+go get -u github.com/MrEhbr/homekit
 ```
 
 ### Download releases
 
-<https://github.com/MrEhbr/golang-repo-template/releases>
+<https://github.com/MrEhbr/homekit/releases>
 
 ## License
 

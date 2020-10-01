@@ -16,7 +16,7 @@ ifneq ($(wildcard .git/HEAD),)
 generate.authors: AUTHORS
 AUTHORS: .git/
 	echo "# This file lists all individuals having contributed content to the repository." > AUTHORS
-	echo "# For how it is generated, see 'https://github.com/MrEhbr/golang-repo-template/rules.mk'" >> AUTHORS
+	echo "# For how it is generated, see 'https://github.com/MrEhbr/homekit/rules.mk'" >> AUTHORS
 	echo >> AUTHORS
 	git log --format='%aN <%aE>' | LC_ALL=C.UTF-8 sort -uf >> AUTHORS
 GENERATE_STEPS += generate.authors
