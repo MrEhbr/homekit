@@ -1,12 +1,12 @@
-package accessories
+package accessory
 
 import (
-	"github.com/brutella/hc/accessory"
+	acc "github.com/brutella/hc/accessory"
 	"github.com/brutella/hc/service"
 )
 
 type VacuumCleanerAccessory struct {
-	*accessory.Accessory
+	*acc.Accessory
 
 	Fan     *Fan
 	Battery *service.BatteryService
@@ -14,9 +14,9 @@ type VacuumCleanerAccessory struct {
 	Dock    *service.OccupancySensor
 }
 
-func NewCleaner(info accessory.Info) *VacuumCleanerAccessory {
+func NewCleaner(info acc.Info) *VacuumCleanerAccessory {
 	cleaner := VacuumCleanerAccessory{}
-	cleaner.Accessory = accessory.New(info, accessory.TypeOther)
+	cleaner.Accessory = acc.New(info, acc.TypeOther)
 
 	cleaner.Fan = NewFan()
 	cleaner.AddService(cleaner.Fan.Service)

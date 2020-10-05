@@ -1,4 +1,4 @@
-package accessories
+package accessory
 
 import (
 	"github.com/brutella/hc/characteristic"
