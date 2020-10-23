@@ -67,7 +67,7 @@ func NewTransport(port int, path, pin string, acc ...*accessory.Accessory) (*Tra
 		cfg.Pin = pin
 	}
 
-	hapPin, err := hc.NewPin(cfg.Pin)
+	hapPin, err := hc.ValidatePin(cfg.Pin)
 	if err != nil {
 		return nil, err
 	}
@@ -170,17 +170,14 @@ func (t *Transport) AddAccessory(acc *accessory.Accessory) error {
 	for _, svc := range acc.GetServices() {
 		for _, ch := range svc.GetCharacteristics() {
 			onConnChange := func(conn net.Conn, c *characteristic.Characteristic, new, old interface{}) {
-				if c.Events {
-					t.notifyListener(acc, c, conn)
-				}
+				t.notifyListener(acc, c, conn)
 			}
 			ch.OnValueUpdateFromConn(onConnChange)
 
 			onChange := func(c *characteristic.Characteristic, new, old interface{}) {
-				if c.Events {
-					t.notifyListener(acc, c, nil)
-				}
+				t.notifyListener(acc, c, nil)
 			}
+
 			ch.OnValueUpdate(onChange)
 		}
 	}
@@ -197,9 +194,18 @@ func (t *Transport) notifyListener(a *accessory.Accessory, c *characteristic.Cha
 			continue
 		}
 
+		sess := t.hapContext.GetSessionForConnection(conn)
+		if sess == nil {
+			continue
+		}
+
+		if !sess.IsSubscribedTo(c) {
+			continue
+		}
+
 		resp, err := hap.NewCharacteristicNotification(a, c)
 		if err != nil {
-			log.Info.Printf("failed to create notification: %s", err)
+			log.Info.Panicf("failed to create notification: %s", err)
 		}
 
 		var buffer = &bytes.Buffer{}
